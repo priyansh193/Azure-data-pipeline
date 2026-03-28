@@ -1,0 +1,9 @@
+{
+	"name": "olist-data-factory-193",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "e2ad2875-170b-422d-8331-11a843a58246",
+		"tenantId": "941dfcb2-54c6-451e-b94d-ce38abfe896b"
+	}
+}
