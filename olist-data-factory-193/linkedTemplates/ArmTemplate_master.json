@@ -1,0 +1,112 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "olist-data-factory-193"
+		},
+		"ADLSFromCSV_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ADLSFromCSV'"
+		},
+		"SQLToADLSLinkService_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'SQLToADLSLinkService'"
+		},
+		"filessSQLDB_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'filessSQLDB'"
+		},
+		"ADLSFromCSV_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://olistdatastoragepriyansh.dfs.core.windows.net/"
+		},
+		"SQLToADLSLinkService_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://olistdatastoragepriyansh.dfs.core.windows.net/"
+		},
+		"filessSQLDB_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "8o-o2r.h.filess.io"
+		},
+		"filessSQLDB_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "olistproject_drivenrope"
+		},
+		"filessSQLDB_properties_typeProperties_username": {
+			"type": "string",
+			"defaultValue": "olistproject_drivenrope"
+		},
+		"httpGithubLinkedService_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://raw.githubusercontent.com/mayank953/"
+		},
+		"JsonFromGithubForLookup_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://raw.githubusercontent.com/mayank953/BigDataProjects/refs/heads/main/Project-Brazillian%20Ecommerce/ForEachInput.json"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "olist-data-factory-193_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"ADLSFromCSV_accountKey": {
+						"value": "[parameters('ADLSFromCSV_accountKey')]"
+					},
+					"SQLToADLSLinkService_accountKey": {
+						"value": "[parameters('SQLToADLSLinkService_accountKey')]"
+					},
+					"filessSQLDB_password": {
+						"value": "[parameters('filessSQLDB_password')]"
+					},
+					"ADLSFromCSV_properties_typeProperties_url": {
+						"value": "[parameters('ADLSFromCSV_properties_typeProperties_url')]"
+					},
+					"SQLToADLSLinkService_properties_typeProperties_url": {
+						"value": "[parameters('SQLToADLSLinkService_properties_typeProperties_url')]"
+					},
+					"filessSQLDB_properties_typeProperties_server": {
+						"value": "[parameters('filessSQLDB_properties_typeProperties_server')]"
+					},
+					"filessSQLDB_properties_typeProperties_database": {
+						"value": "[parameters('filessSQLDB_properties_typeProperties_database')]"
+					},
+					"filessSQLDB_properties_typeProperties_username": {
+						"value": "[parameters('filessSQLDB_properties_typeProperties_username')]"
+					},
+					"httpGithubLinkedService_properties_typeProperties_url": {
+						"value": "[parameters('httpGithubLinkedService_properties_typeProperties_url')]"
+					},
+					"JsonFromGithubForLookup_properties_typeProperties_url": {
+						"value": "[parameters('JsonFromGithubForLookup_properties_typeProperties_url')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
